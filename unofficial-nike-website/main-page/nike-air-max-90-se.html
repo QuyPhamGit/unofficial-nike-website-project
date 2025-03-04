@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/product.css">
+  <link href="https://pro.fontawesome.com/releases/v5.12.0/css/all.css" rel="stylesheet">
+  <title>Nike Air Max 90 SE</title>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="../index.html"><img src="../images/image-removebg-preview.png" alt="Nike Logo"></a> 
+    </div>
+    <div class="menu">
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="#">About</a></li> 
+          <li><a href="../products.html">Shop</a></li> 
+          <li><a href="../cart.html">Cart</a></li> 
+          <li><a href="../login.html" id="accountLink">Account</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="hero">
+    <div class="row">
+      <div class="col">
+        <div class="slider">
+          <div class="product">
+            <img src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5/bddcdbff-904e-496e-9f61-ad1f82bd961c/air-max-90-se-shoes-j59HGz.png" onclick="clickme(this)" alt="Nike Air Max 90 SE">
+            <img src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/fb5b855c-603e-42ce-9d39-6cbff8a802d9/air-max-90-se-shoes-j59HGz.png" onclick="clickme(this)" alt="Nike Air Max 90 SE">
+            <img src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/be09a8db-9d0b-4058-9c51-393886258a66/air-max-90-se-shoes-j59HGz.png" onclick="clickme(this)" alt="Nike Air Max 90 SE">
+            <img src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/c7a0f2ab-8d23-482f-81d6-489ad9d97462/air-max-90-se-shoes-j59HGz.png" onclick="clickme(this)" alt="Nike Air Max 90 SE">
+          </div>
+          <div class="preview">
+            <img src="https://static.nike.com/a/images/t_PDP_864_v1/f_auto,b_rgb:f5f5f5,q_80/c7a0f2ab-8d23-482f-81d6-489ad9d97462/air-max-90-se-shoes-j59HGz.png" id="imagebox" alt="Nike Air Max 90 SE">
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="content"> 
+          <h2>Nike Air Max 90 SE</h2>
+          <p style="margin: 0 0 10px 0">- Colour Shown: Black/Scream Green/Summit White/Obsidian</p>
+          <p>- Style: DN4155-001</p> 
+          <p>- Foam midsole for a soft feel</p> 
+          <p>- Country/Region of Origin: Indonesia</p>  
+          <p>- Padded, low-top collar looks sleek and feels comfortable.</p> 
+          <div class="rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <button type="button" class="addToCart">Add to cart <i class="fas fa-shopping-cart"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section class="footer-section">
+    <div class="footer"></div>
+    <div class="bar"></div>
+    <footer>
+      <div class="footer-content">
+        <h3>You Have Reached The End Of Nike's Website!</h3>
+        <p>If you wish to contact us for any other reason, including because you have a complaint, please do so by e-mailing us at info@eshopworld.com.</p>
+        <ul class="socials">
+          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+          <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+          <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+        </ul>
+      </div>
+      <div class="footer-bottom">
+        <p>Copyright&copy; 2022 Nike. Designed by <span>Pham Ngo Thien Quy</span></p> 
+      </div>
+    </footer>
+  </section>
+
+  <script src="../js/products.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if user is logged in
+      const isLoggedIn = localStorage.getItem('isLoggedIn');
+      const accountLink = document.getElementById('accountLink');
+      
+      if (isLoggedIn === 'true') {
+        accountLink.textContent = 'Logout';
+        accountLink.href = '#';
+        accountLink.addEventListener('click', function(e) {
+          e.preventDefault();
+          localStorage.setItem('isLoggedIn', 'false');
+          window.location.href = '../login.html';
+        });
+      } else {
+        // Redirect to login if not logged in
+        window.location.href = '../login.html';
+        return;
+      }
+      
+      // Image preview functionality
+      window.clickme = function(smallImg) {
+        const fullImg = document.getElementById("imagebox");
+        fullImg.src = smallImg.src;
+      };
+      
+      // Add to cart functionality
+      const addToCartBtn = document.querySelector('.addToCart');
+      addToCartBtn.addEventListener('click', function() {
+        const product = products.find(p => p.id === 3); // Nike Air Max 90 SE
+        if (product) {
+          const carts = JSON.parse(localStorage.getItem('carts')) || [];
+          carts.push(product);
+          localStorage.setItem('carts', JSON.stringify(carts));
+          window.location.href = '../cart.html';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

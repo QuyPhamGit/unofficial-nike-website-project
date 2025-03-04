@@ -1,0 +1,193 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+section{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+section .imgBx:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(225deg,#607d8b,#607d8b);
+    z-index: 1;
+    mix-blend-mode: screen;
+}
+section .left-side
+{
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+section .left-side img
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+section .right-side{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    background-color: #607d8b;
+    
+}
+
+section .formBx{
+    border-radius: 50px;
+    background-color: whitesmoke;
+    padding: 100px;
+
+}
+
+section .formBx img{
+    margin-bottom: 50px;
+    height: 100px;
+    margin-left: 30px;
+
+}
+
+section .right-side .formBx{
+    width: 50%;
+}
+
+section .right-side .formBx h2{
+    color: #607d8b;
+    font-weight: 600;
+    font-size: 1.5em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    margin-left: 35%;
+    border-bottom: 4px solid grey;
+    display: inline-block;
+    letter-spacing: 1px;
+}
+
+section .right-side .formBx h2:hover{
+    color: #3287c1
+}
+
+section .right-side .formBx .inputBx
+{
+    margin-bottom: 20px;
+}
+
+section .right-side .formBx .inputBx span{
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: inline-block;
+    color: #607d8b;
+    font-weight: 300;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+section .right-side .formBx .inputBx input{
+    width: 100%;
+    padding: 15px 20px;
+    outline:none;
+    font-weight: 400;
+    border: 1px solid #607d8b;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #607d8b;
+    background: transparent;
+    border-radius: 30px;
+}
+
+section .right-side .formBx .inputBx input[type="submit"]{
+    margin-top: 20px;
+    background: #607d8b;
+    color: #fff;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    cursor: pointer;
+}
+section .right-side .formBx .inputBx input[type="submit"]:hover{
+    background: #3287c1;
+}
+
+section .right-side .formBx .inputBx p{
+    color: #607d8b;
+}
+
+section .right-side .formBx .inputBx a{
+    color: #3287c1;
+}
+
+section .right-side .formBx .inputBx p a{
+    color: grey;
+    text-decoration: none;
+}
+
+section .right-side .formBx .inputBx p a:hover{
+    color: #3287c1;
+    text-decoration: none;
+}
+
+section .right-side .formBx h3{
+    color: #607d8b;
+    text-align: center;
+    margin: 50px 0 10px;
+    font-weight: 500;
+}
+
+section .right-side .formBx .social-media{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section .right-side .formBx .social-media li{
+    list-style: none;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #607d8b;
+    border-radius: 50%;
+    margin: 0 7px;
+    cursor: pointer;
+}
+
+section .right-side .formBx .social-media li:hover{
+    background: #3287c1;
+}
+
+section .right-side .formBx .social-media li .fa-facebook{
+    color: white;
+    text-decoration: none;
+}
+
+section .right-side .formBx .social-media li .fa-twitter{
+    color: white;
+    text-decoration: none;
+}
+
+section .right-side .formBx .social-media li .fa-google{
+    color: white;
+    text-decoration: none;
+}
+
+section .right-side .formBx .social-media li .fa-github{
+    color: white;
+    text-decoration: none;
+}

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/product-home.css">
+  <link href="https://pro.fontawesome.com/releases/v5.12.0/css/all.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&family=Poppins:ital,wght@0,700;1,100;1,700&display=swap" rel="stylesheet">
+  <title>Nike - Products</title>
+</head>
+<body>
+<!-- Menu -->
+<section class="header">
+  <nav>
+    <a href="index.html"><img src="images/image-removebg-preview.png" alt="Nike Logo"></a>
+    <div class="nav-links">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#">About</a></li> 
+        <li><a href="products.html">Shop</a></li> 
+        <li><a href="cart.html">Cart</a></li> 
+        <li><a href="login.html" id="accountLink">Account</a></li> 
+      </ul>
+    </div> 
+  </nav>
+  <div class="text-box">
+    <h1>Welcome To Our Shop!</h1>
+    <p>"'Just Do It' is still as relevant to us as a brand today as it was 23 years ago," <br> – Davide Grasso, VP of global brand marketing at Nike.</p>
+    <a href="#" class="visit-btn">Other Franchisee</a> 
+  </div>
+</section>
+
+<!-- Product Page -->
+<section class="product-page">
+  <div class="home-content">
+    <div class="max-width">
+      <p class="title">Feature Products</p>
+      <hr>
+      <div class="gallery shoe" id="productGallery">
+        <!-- Products will be loaded dynamically here -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<section class="footer-section">
+  <div class="bar"></div>
+  <footer>
+    <div class="footer-content">
+      <h3>You Have Reached The End Of Nike's Website!</h3>
+      <p>If you wish to contact us for any other reason, including because you have a complaint, please do so by e-mailing us at info@eshopworld.com.</p>
+      <ul class="socials">
+        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+        <li><a href="#"><i class="fa fa-youtube"></i></a></li>
+        <li><a href="#"><i class="fa fa-linkedin-square"></i></a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright&copy; 2022 Nike. Designed by <span>Pham Ngo Thien Quy</span></p> 
+    </div>
+  </footer>
+</section>
+
+<script src="https://kit.fontawesome.com/3657734dcd.js" crossorigin="anonymous"></script>
+<script src="js/products.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Check if user is logged in
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    const accountLink = document.getElementById('accountLink');
+    
+    if (isLoggedIn === 'true') {
+      accountLink.textContent = 'Logout';
+      accountLink.href = '#';
+      accountLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        localStorage.setItem('isLoggedIn', 'false');
+        window.location.href = 'login.html';
+      });
+    } else {
+      // Redirect to login if not logged in
+      window.location.href = 'login.html';
+    }
+    
+    // Load products
+    const productGallery = document.getElementById('productGallery');
+    
+    products.forEach(product => {
+      const productDiv = document.createElement('div');
+      productDiv.className = 'content';
+      productDiv.innerHTML = `
+        <img src="${product.pro_img}" alt="${product.pro_name}">
+        <h3>${product.pro_name}</h3>
+        <p>${product.pro_desc}</p>
+        <h6>Start at: ${product.pro_price.toLocaleString()}₫</h6>
+        <ul>
+          <li><i class="fa fa-star" aria-hidden="true"></i></li>
+          <li><i class="fa fa-star" aria-hidden="true"></i></li>
+          <li><i class="fa fa-star" aria-hidden="true"></i></li>
+          <li><i class="fa fa-star" aria-hidden="true"></i></li>
+          <li><i class="fa fa-star" aria-hidden="true"></i></li>
+        </ul>
+        <button class="buy-1" data-id="${product.id}">Buy Now</button>
+      `;
+      productGallery.appendChild(productDiv);
+    });
+    
+    // Add event listeners to Buy Now buttons
+    const buyButtons = document.querySelectorAll('.buy-1');
+    buyButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const productId = parseInt(this.getAttribute('data-id'));
+        const product = products.find(p => p.id === productId);
+        
+        // Product details page mapping
+        const productPages = {
+          1: 'product-detail/nike-air-trainer-1-sp.html',
+          2: 'product-detail/nike-air-more-up-tempo-96.html',
+          3: 'product-detail/nike-air-max-90-se.html'
+        };
+        
+        if (productPages[productId]) {
+          window.location.href = productPages[productId];
+        } else {
+          // Fallback - add to cart directly
+          const carts = JSON.parse(localStorage.getItem('carts')) || [];
+          carts.push(product);
+          localStorage.setItem('carts', JSON.stringify(carts));
+          window.location.href = 'cart.html';
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>
