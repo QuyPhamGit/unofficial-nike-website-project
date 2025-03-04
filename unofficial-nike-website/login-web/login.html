@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="MindX Web Develop Project\Website Project\css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <title>Nike - Login</title>
+</head>
+<body>
+  <section>
+    <div class="right-side">
+        <div class="formBx">
+          <img src="images/download-removebg-preview.png" alt="Nike Logo">
+          <h2>Login</h2>
+            <div class="inputBx">
+              <span>Email:</span>
+              <input type="text" id="email" name="email" placeholder="Enter your email" />
+            </div>
+            <div class="inputBx">
+              <span>Password:</span> 
+              <input type="password" id="password" name="password" placeholder="Enter your password" />
+            </div>
+           <div class="inputBx">
+              <input type="submit" id="login" name="login" value="Login" />
+           </div>
+           <div class="inputBx">
+            <p>Don't have an account? <a href="register.html">Sign up!</a></p>  
+         </div>
+          <h3>Login with social media</h3>
+           <ul class="social-media">
+             <li><a href="#" class="fa fa-facebook" id="loginFacebook"></a></li>
+             <li><a href="#" class="fa fa-twitter"></a></li>
+             <li><a href="#" class="fa fa-github" id="loginGithub"></a></li>
+             <li><a href="#" class="fa fa-google" id="loginGoogle"></a></li>
+          </ul> 
+        </div>
+      </div>
+      <div class="left-side">
+        <img src="images/danilo-capece-NoVnXXmDNi0-unsplash.jpg" alt="Background Image">
+      </div>
+  </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const loginBtn = document.getElementById('login');
+      const loginFacebook = document.getElementById('loginFacebook');
+      const loginGoogle = document.getElementById('loginGoogle');
+      const loginGithub = document.getElementById('loginGithub');
+      
+      // Simple login functionality
+      loginBtn.addEventListener('click', function() {
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        
+        // Simple validation
+        if (email && password) {
+          // In a real app, you would verify against a database
+          // For demo purposes, we'll just simulate successful login
+          localStorage.setItem('isLoggedIn', 'true');
+          localStorage.setItem('userEmail', email);
+          alert('Welcome to Nike!');
+          window.location.href = 'index.html';
+        } else {
+          alert('Please enter both email and password');
+        }
+      });
+      
+      // Social login handlers (simulated)
+      loginFacebook.addEventListener('click', function(e) {
+        e.preventDefault();
+        simulateSocialLogin('Facebook');
+      });
+      
+      loginGoogle.addEventListener('click', function(e) {
+        e.preventDefault();
+        simulateSocialLogin('Google');
+      });
+      
+      loginGithub.addEventListener('click', function(e) {
+        e.preventDefault();
+        simulateSocialLogin('Github');
+      });
+      
+      function simulateSocialLogin(provider) {
+        localStorage.setItem('isLoggedIn', 'true');
+        localStorage.setItem('loginProvider', provider);
+        alert(`Login successfully with ${provider}!`);
+        window.location.href = 'index.html';
+      }
+    });
+  </script>
+</body>
+</html>
